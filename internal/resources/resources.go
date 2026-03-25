@@ -84,7 +84,7 @@ func registerInterfaceDocTemplate(s *server.MCPServer, cfg *config.Config) {
 			return nil, fmt.Errorf("未找到 project_id=%d 的配置", projectID)
 		}
 
-		client := yapi.NewClient(cfg.GetBaseURL(p), p.Token, p.ProjectID)
+		client := yapi.NewClient(cfg.GetBaseURL(p), p.Token, p.ProjectID, cfg.SkipTLSVerify)
 		detail, err := client.GetInterfaceDetail(interfaceID)
 		if err != nil {
 			return nil, fmt.Errorf("获取接口详情失败: %w", err)

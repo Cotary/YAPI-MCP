@@ -10,6 +10,9 @@ cache_ttl_minutes: 10
 # 日志级别：debug / info / warn / error
 log_level: "info"
 
+# 跳过 TLS 证书验证（仅在 YAPI 使用自签名证书或证书过期时临时开启）
+skip_tls_verify: false
+
 # YAPI 项目列表（支持多项目配置）
 projects:
   - project_id: 1026

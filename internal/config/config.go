@@ -23,6 +23,7 @@ type Config struct {
 	YapiBaseURL     string          `yaml:"yapi_base_url"`
 	CacheTTLMinutes int             `yaml:"cache_ttl_minutes"`
 	LogLevel        string          `yaml:"log_level"`
+	SkipTLSVerify   bool            `yaml:"skip_tls_verify"`
 	Projects        []ProjectConfig `yaml:"projects"`
 }
 
@@ -90,6 +91,9 @@ func applyEnvOverrides(cfg *Config) {
 	}
 	if v := os.Getenv("YAPI_LOG_LEVEL"); v != "" {
 		cfg.LogLevel = v
+	}
+	if v := os.Getenv("YAPI_SKIP_TLS_VERIFY"); v == "true" || v == "1" {
+		cfg.SkipTLSVerify = true
 	}
 }
 

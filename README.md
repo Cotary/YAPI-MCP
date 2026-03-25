@@ -113,6 +113,7 @@ HTTP 模式（团队共享）：
 |------|------|
 | `YAPI_BASE_URL` | 覆盖全局 base_url |
 | `YAPI_LOG_LEVEL` | 覆盖日志级别 |
+| `YAPI_SKIP_TLS_VERIFY` | 跳过 TLS 证书验证（`true`/`1`） |
 | `YAPI_MCP_CONFIG` | 指定配置文件路径 |
 
 **命令行参数**：
@@ -255,6 +256,7 @@ HTTP mode (team sharing):
 |----------|-------------|
 | `YAPI_BASE_URL` | Override global base_url |
 | `YAPI_LOG_LEVEL` | Override log level |
+| `YAPI_SKIP_TLS_VERIFY` | Skip TLS certificate verification (`true`/`1`) |
 | `YAPI_MCP_CONFIG` | Config file path |
 
 **CLI flags**:

@@ -111,7 +111,7 @@ func (d *Deps) getMenuCached(p config.ProjectConfig) ([]yapi.MenuCategory, error
 	}
 
 	baseURL := d.Config.GetBaseURL(&p)
-	client := yapi.NewClient(baseURL, p.Token, p.ProjectID)
+	client := yapi.NewClient(baseURL, p.Token, p.ProjectID, d.Config.SkipTLSVerify)
 	menu, err := client.GetMenuWithInterfaces()
 	if err != nil {
 		return nil, err

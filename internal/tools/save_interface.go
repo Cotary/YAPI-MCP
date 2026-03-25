@@ -50,18 +50,25 @@ func (d *Deps) SaveInterfaceHandler(ctx context.Context, req mcp.CallToolRequest
 		return mcp.NewToolResultError(fmt.Sprintf("cat_id 必须是数字: %s", catIDStr)), nil
 	}
 
+	reqBodyType := req.GetString("req_body_type", "")
+	reqBodyOther := req.GetString("req_body_other", "")
+	resBodyType := req.GetString("res_body_type", "")
+	resBody := req.GetString("res_body", "")
+
 	params := yapi.SaveInterfaceParams{
-		CatID:       catID,
-		Title:       req.GetString("title", ""),
-		Path:        req.GetString("path", ""),
-		Method:      req.GetString("method", "GET"),
-		Status:      req.GetString("status", "undone"),
-		Description: req.GetString("desc", ""),
-		Markdown:    req.GetString("markdown", ""),
-		ReqBodyType: req.GetString("req_body_type", ""),
-		ReqBodyOther: req.GetString("req_body_other", ""),
-		ResBodyType: req.GetString("res_body_type", ""),
-		ResBody:     req.GetString("res_body", ""),
+		CatID:               catID,
+		Title:               req.GetString("title", ""),
+		Path:                req.GetString("path", ""),
+		Method:              req.GetString("method", "GET"),
+		Status:              req.GetString("status", "undone"),
+		Description:         req.GetString("desc", ""),
+		Markdown:            req.GetString("markdown", ""),
+		ReqBodyType:         reqBodyType,
+		ReqBodyOther:        reqBodyOther,
+		ReqBodyIsJSONSchema: reqBodyType == "json" && reqBodyOther != "",
+		ResBodyType:         resBodyType,
+		ResBody:             resBody,
+		ResBodyIsJSONSchema: resBodyType == "json" && resBody != "",
 	}
 
 	if idStr := req.GetString("id", ""); idStr != "" {

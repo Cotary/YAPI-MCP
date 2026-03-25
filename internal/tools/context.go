@@ -35,7 +35,7 @@ func (d *Deps) GetClient(projectID int) (*yapi.Client, error) {
 		return nil, fmt.Errorf("未找到 project_id=%d 的配置，请先通过 yapi_list_projects 查看可用项目", projectID)
 	}
 	baseURL := d.Config.GetBaseURL(p)
-	return yapi.NewClient(baseURL, p.Token, p.ProjectID), nil
+	return yapi.NewClient(baseURL, p.Token, p.ProjectID, d.Config.SkipTLSVerify), nil
 }
 
 // ParseProjectID 从字符串参数解析 project_id

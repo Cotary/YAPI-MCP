@@ -2,6 +2,7 @@ package yapi
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -21,13 +22,18 @@ type Client struct {
 }
 
 // NewClient 创建 YAPI 客户端实例
-func NewClient(baseURL, token string, projectID int) *Client {
+func NewClient(baseURL, token string, projectID int, skipTLSVerify bool) *Client {
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+	if skipTLSVerify {
+		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true} //nolint:gosec
+	}
 	return &Client{
 		baseURL:   strings.TrimRight(baseURL, "/"),
 		token:     token,
 		projectID: projectID,
 		httpClient: &http.Client{
-			Timeout: 30 * time.Second,
+			Timeout:   30 * time.Second,
+			Transport: transport,
 		},
 	}
 }
