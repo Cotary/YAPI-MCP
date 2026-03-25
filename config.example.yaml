@@ -1,0 +1,29 @@
+# YAPI MCP Server 配置示例
+# 复制此文件为 config.yaml 并填入真实信息
+
+# YAPI 服务器地址（全局默认值，各项目可单独覆盖）
+yapi_base_url: "https://yapi.example.com"
+
+# 缓存有效期（分钟），设为 0 表示不缓存
+cache_ttl_minutes: 10
+
+# 日志级别：debug / info / warn / error
+log_level: "info"
+
+# YAPI 项目列表（支持多项目配置）
+projects:
+  - project_id: 1026
+    token: "your-token-for-project-1026"
+    name: "用户服务"
+    description: "用户相关的 API 接口"
+
+  - project_id: 1027
+    token: "your-token-for-project-1027"
+    name: "订单服务"
+    description: "订单相关的 API 接口"
+
+  - project_id: 1028
+    token: "your-token-for-project-1028"
+    name: "支付服务"
+    description: "支付相关的 API 接口"
+    base_url: "https://another-yapi.example.com"  # 可选：覆盖全局 base_url
