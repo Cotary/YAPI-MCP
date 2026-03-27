@@ -147,3 +147,33 @@ type SaveInterfaceParams struct {
 type SaveInterfaceResult struct {
 	ID json.Number `json:"_id"`
 }
+
+// AddCategoryParams 新增接口分类参数
+type AddCategoryParams struct {
+	Name        string `json:"name"`
+	Description string `json:"desc"`
+	ProjectID   int    `json:"project_id"`
+	Token       string `json:"token"`
+}
+
+// AddCategoryResult 新增分类返回结果
+type AddCategoryResult struct {
+	ID          int    `json:"_id"`
+	Name        string `json:"name"`
+	Description string `json:"desc"`
+	ProjectID   int    `json:"project_id"`
+}
+
+// ImportDataParams 数据导入参数
+type ImportDataParams struct {
+	Type  string `json:"type"`
+	JSON  string `json:"json"`
+	Merge string `json:"merge"`
+	Token string `json:"token"`
+	URL   string `json:"url,omitempty"`
+}
+
+// ImportDataResult 数据导入返回结果
+type ImportDataResult struct {
+	SuccessMessage string `json:"successMessage,omitempty"`
+}

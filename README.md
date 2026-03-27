@@ -14,7 +14,7 @@
 
 ### 功能
 
-**Tools（7 个工具）**
+**Tools（9 个工具）**
 
 | 工具 | 描述 | 类型 |
 |------|------|------|
@@ -25,6 +25,8 @@
 | `yapi_get_interface_detail` | 获取接口完整详情 | 只读 |
 | `yapi_search_interfaces` | 按关键词搜索接口（支持跨项目） | 只读 |
 | `yapi_save_interface` | 新增或更新接口 | 写入 |
+| `yapi_add_category` | 新增接口分类 | 写入 |
+| `yapi_import_data` | 导入接口数据（Swagger/JSON/HAR/Postman） | 写入 |
 
 **Resources（2 个资源）**
 
@@ -157,7 +159,7 @@ A YAPI MCP Server built with Go and [mcp-go](https://github.com/mark3labs/mcp-go
 
 ### Features
 
-**Tools (7 tools)**
+**Tools (9 tools)**
 
 | Tool | Description | Type |
 |------|-------------|------|
@@ -168,6 +170,8 @@ A YAPI MCP Server built with Go and [mcp-go](https://github.com/mark3labs/mcp-go
 | `yapi_get_interface_detail` | Get full interface details | Read-only |
 | `yapi_search_interfaces` | Search interfaces by keyword (cross-project) | Read-only |
 | `yapi_save_interface` | Create or update an interface | Write |
+| `yapi_add_category` | Add a new interface category | Write |
+| `yapi_import_data` | Import data (Swagger/JSON/HAR/Postman) | Write |
 
 **Resources (2 resources)**
 

@@ -135,6 +135,31 @@ func (c *Client) GetInterfaceDetail(interfaceID int) (*InterfaceDetail, error) {
 	return &resp.Data, nil
 }
 
+// AddCategory 新增接口分类
+// YAPI API: POST /api/interface/add_cat
+func (c *Client) AddCategory(params AddCategoryParams) (*AddCategoryResult, error) {
+	params.Token = c.token
+	params.ProjectID = c.projectID
+
+	var resp Response[AddCategoryResult]
+	if err := c.doPost("/api/interface/add_cat", params, &resp); err != nil {
+		return nil, err
+	}
+	return &resp.Data, nil
+}
+
+// ImportData 服务端数据导入（Swagger / JSON / HAR / Postman）
+// YAPI API: POST /api/open/import_data
+func (c *Client) ImportData(params ImportDataParams) error {
+	params.Token = c.token
+
+	var resp Response[json.RawMessage]
+	if err := c.doPost("/api/open/import_data", params, &resp); err != nil {
+		return err
+	}
+	return nil
+}
+
 // SaveInterface 新增或更新接口
 // 有 ID → POST /api/interface/up; 无 ID → POST /api/interface/add
 func (c *Client) SaveInterface(params SaveInterfaceParams) (*SaveInterfaceResult, error) {

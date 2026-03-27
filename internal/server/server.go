@@ -15,7 +15,7 @@ import (
 // 这是整个 MCP 服务的装配中心，依次完成：
 //  1. 创建 MCPServer 并启用所需能力（Tools/Resources/Prompts/Logging）
 //  2. 配置 Hooks（请求生命周期钩子）和 Middleware（工具调用中间件）
-//  3. 注册所有 Tools（7 个 YAPI 操作工具）
+//  3. 注册所有 Tools（9 个 YAPI 操作工具）
 //  4. 注册所有 Resources（项目列表 + 接口文档模板）
 //  5. 注册所有 Prompts（API 审查、文档生成、测试生成）
 func NewMCPServer(cfg *config.Config) *server.MCPServer {
@@ -49,6 +49,8 @@ func NewMCPServer(cfg *config.Config) *server.MCPServer {
 	s.AddTool(tools.GetInterfaceDetailTool(), deps.GetInterfaceDetailHandler)
 	s.AddTool(tools.SearchInterfacesTool(), deps.SearchInterfacesHandler)
 	s.AddTool(tools.SaveInterfaceTool(), deps.SaveInterfaceHandler)
+	s.AddTool(tools.AddCategoryTool(), deps.AddCategoryHandler)
+	s.AddTool(tools.ImportDataTool(), deps.ImportDataHandler)
 
 	// 注册 Resources
 	resources.Register(s, cfg)
